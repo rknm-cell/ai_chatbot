@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useDebounce } from "use-debounce";
+import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -22,24 +24,20 @@ export default function Page() {
   }
 
   return (
-    <div className="flex flex-col gap-2 p-2">
+    <div className="flex flex-col gap-2 p-2 justify-center align-middle bg-amber-400 h-dvh w-dvw">
       {isLoading ? (
         "Loading..."
       ) : (
         <div data-testid="generation">{responseText}</div>
       )}
-      <input
+      <Input className="bg-amber-100"
       placeholder="Start chatting"
         onChange={(e) => {
           setText(e.target.value);
-        }}
-      ></input>
-      <div
-        className="cursor-pointer bg-zinc-100 p-2"
-        onClick={handleGenerateResponse}
-      >
-        Generate
-      </div>
+        }}></Input>
+      
+      <Button onClick={handleGenerateResponse}>Generate</Button>
+      
     </div>
   );
 }
