@@ -1,64 +1,34 @@
-"use client";
+'use client';
 
-import { useChat } from "@ai-sdk/react";
 import { useState } from "react";
-import { Button } from "~/components/ui/button";
 
+export default function Page(){
+  const [generation, setGeneration] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [text, setText] = useState<string>('');
 
-export default function Page() {
-  const {
-    messages,
-    setMessages,
-    input,
-    handleInputChange,
-    handleSubmit,
-    status,
-    error,
-    stop,
-    reload,
-  } = useChat({});
-
-
-  const handleDelete = (id: string) => {
-    setMessages(messages.filter(message => message.id !== id))
+  async function handleGenerateResponse(){
+    const response = await fetch('/api/completion', {
+      method: 'POST',
+      body: JSON.stringify({
+        prompt: 'Why is the sky blue?',
+      })
+    })
+    const data = await response.json() as {text: string};
+    setText(data.text);
+    setIsLoading(false);
   }
 
   return (
-    <div className="bg-zinc-500 max-h-10">
-      {messages.map((message) => (
-        <div key={message.id}>
-          {message.role === "user" ? "User: " : "AI: "}
-          {message.content}
-          <button onClick={() => handleDelete(message.id)}>Delete</button>
-        </div>
-      ))}
-      {error && (
-        <>
-          <div>An error occurred.</div>
-          <button type="button" onClick={() => reload()}>
-            Retry
-          </button>
-        </>
-      )}
-      {(status === "submitted" || status === "streaming") && (
-        <div>
-          {status === "submitted" && <Spinner />}
-          <Button type="button" onClick={() => stop()}>
-            {" "}
-            Stop{" "}
-          </Button>
-        </div>
-      )}
+    <div className="p-2 flex flex-col gap-2">
+      <div
+        className="p-2 bg-zinc-100 cursor-pointer"
+         onClick={handleGenerateResponse}
+      >
+        Generate
 
-      <form onSubmit={handleSubmit}>
-        <input
-          name="prompt"
-          value={input}
-          onChange={handleInputChange}
-          disabled={error != null}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      </div>
+      {isLoading ? 'Loading...' : <div data-testid="generation">generation</div>}
     </div>
-  );
+  )
 }
