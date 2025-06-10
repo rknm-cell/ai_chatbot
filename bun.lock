@@ -4,6 +4,7 @@
     "": {
       "name": "ai-chatbot",
       "dependencies": {
+        "@ai-sdk/openai": "^1.3.22",
         "@radix-ui/react-slot": "^1.2.3",
         "@t3-oss/env-nextjs": "^0.12.0",
         "@tanstack/react-query": "^5.69.0",
@@ -23,6 +24,7 @@
         "server-only": "^0.0.1",
         "superjson": "^2.2.1",
         "tailwind-merge": "^3.3.0",
+        "use-debounce": "^10.0.5",
         "zod": "^3.24.2",
       },
       "devDependencies": {
@@ -46,6 +48,8 @@
     },
   },
   "packages": {
+    "@ai-sdk/openai": ["@ai-sdk/openai@1.3.22", "", { "dependencies": { "@ai-sdk/provider": "1.1.3", "@ai-sdk/provider-utils": "2.2.8" }, "peerDependencies": { "zod": "^3.0.0" } }, "sha512-QwA+2EkG0QyjVR+7h6FE7iOu2ivNqAVMm9UJZkVxxTk5OIq5fFJDTEI/zICEMuHImTTXR2JjsL6EirJ28Jc4cw=="],
+
     "@ai-sdk/provider": ["@ai-sdk/provider@1.1.3", "", { "dependencies": { "json-schema": "^0.4.0" } }, "sha512-qZMxYJ0qqX/RfnuIaab+zp8UAeJn/ygXXAffR5I4N0n1IrvA6qBsjc8hXLmBiMV2zoXlifkacF7sEFnYnjBcqg=="],
 
     "@ai-sdk/provider-utils": ["@ai-sdk/provider-utils@2.2.8", "", { "dependencies": { "@ai-sdk/provider": "1.1.3", "nanoid": "^3.3.8", "secure-json-parse": "^2.7.0" }, "peerDependencies": { "zod": "^3.23.8" } }, "sha512-fqhG+4sCVv8x7nFzYnFo19ryhAa3w096Kmc3hWxMQfW/TubPOmt3A6tYZhl4mUfQWWQMsuSkLrtjlWuXBVSGQA=="],
@@ -945,6 +949,8 @@
     "unrs-resolver": ["unrs-resolver@1.7.12", "", { "dependencies": { "napi-postinstall": "^0.2.2" }, "optionalDependencies": { "@unrs/resolver-binding-darwin-arm64": "1.7.12", "@unrs/resolver-binding-darwin-x64": "1.7.12", "@unrs/resolver-binding-freebsd-x64": "1.7.12", "@unrs/resolver-binding-linux-arm-gnueabihf": "1.7.12", "@unrs/resolver-binding-linux-arm-musleabihf": "1.7.12", "@unrs/resolver-binding-linux-arm64-gnu": "1.7.12", "@unrs/resolver-binding-linux-arm64-musl": "1.7.12", "@unrs/resolver-binding-linux-ppc64-gnu": "1.7.12", "@unrs/resolver-binding-linux-riscv64-gnu": "1.7.12", "@unrs/resolver-binding-linux-riscv64-musl": "1.7.12", "@unrs/resolver-binding-linux-s390x-gnu": "1.7.12", "@unrs/resolver-binding-linux-x64-gnu": "1.7.12", "@unrs/resolver-binding-linux-x64-musl": "1.7.12", "@unrs/resolver-binding-wasm32-wasi": "1.7.12", "@unrs/resolver-binding-win32-arm64-msvc": "1.7.12", "@unrs/resolver-binding-win32-ia32-msvc": "1.7.12", "@unrs/resolver-binding-win32-x64-msvc": "1.7.12" } }, "sha512-pfcdDxrVoUc5ZB3VCVJNSWbs63lgQVYLVw4k/rCr8Smi/V2Sxi1odEckVq6Zf803OtbYia1+YpiGCZoODfWLsQ=="],
 
     "uri-js": ["uri-js@4.4.1", "", { "dependencies": { "punycode": "^2.1.0" } }, "sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg=="],
+
+    "use-debounce": ["use-debounce@10.0.5", "", { "peerDependencies": { "react": "*" } }, "sha512-Q76E3lnIV+4YT9AHcrHEHYmAd9LKwUAbPXDm7FlqVGDHiSOhX3RDjT8dm0AxbJup6WgOb1YEcKyCr11kBJR5KQ=="],
 
     "use-sync-external-store": ["use-sync-external-store@1.5.0", "", { "peerDependencies": { "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0" } }, "sha512-Rb46I4cGGVBmjamjphe8L/UnvJD+uPPtTkNvX5mZgqdbavhI4EbgIWJiIHXJ8bc/i9EQGPRh4DwEURJ552Do0A=="],
 

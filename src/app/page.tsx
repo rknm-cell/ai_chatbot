@@ -1,64 +1,43 @@
 "use client";
 
-import { useChat } from "@ai-sdk/react";
 import { useState } from "react";
+import { useDebounce } from "use-debounce";
 import { Button } from "~/components/ui/button";
-
+import { Input } from "~/components/ui/input";
 
 export default function Page() {
-  const {
-    messages,
-    setMessages,
-    input,
-    handleInputChange,
-    handleSubmit,
-    status,
-    error,
-    stop,
-    reload,
-  } = useChat({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [responseText, setResponseText] = useState<string>("");
+  const [text, setText] = useState<string>("");
+  const [prompt] = useDebounce(text, 1000);
 
-
-  const handleDelete = (id: string) => {
-    setMessages(messages.filter(message => message.id !== id))
+  async function handleGenerateResponse() {
+    const response = await fetch("/api/completion", {
+      method: "POST",
+      body: JSON.stringify({
+        prompt: prompt,
+      }),
+    });
+    const data = (await response.json()) as { text: string };
+    setResponseText(data.text);
+    setIsLoading(false);
   }
 
   return (
-    <div className="bg-zinc-500 max-h-10">
-      {messages.map((message) => (
-        <div key={message.id}>
-          {message.role === "user" ? "User: " : "AI: "}
-          {message.content}
-          <button onClick={() => handleDelete(message.id)}>Delete</button>
-        </div>
-      ))}
-      {error && (
-        <>
-          <div>An error occurred.</div>
-          <button type="button" onClick={() => reload()}>
-            Retry
-          </button>
-        </>
+    <div className="flex flex-col gap-2 p-2 justify-center align-middle bg-amber-400 h-dvh w-dvw">
+      {isLoading ? (
+        "Loading..."
+      ) : (
+        <div data-testid="generation">{responseText}</div>
       )}
-      {(status === "submitted" || status === "streaming") && (
-        <div>
-          {status === "submitted" && <Spinner />}
-          <Button type="button" onClick={() => stop()}>
-            {" "}
-            Stop{" "}
-          </Button>
-        </div>
-      )}
-
-      <form onSubmit={handleSubmit}>
-        <input
-          name="prompt"
-          value={input}
-          onChange={handleInputChange}
-          disabled={error != null}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <Input className="bg-amber-100"
+      placeholder="Start chatting"
+        onChange={(e) => {
+          setText(e.target.value);
+        }}></Input>
+      
+      <Button onClick={handleGenerateResponse}>Generate</Button>
+      
     </div>
   );
 }
