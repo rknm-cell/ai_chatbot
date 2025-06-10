@@ -7,17 +7,16 @@ import postgres from "postgres";
 
 const client = postgres(process.env.POSTGRES_URL!);
 const db = drizzle(client);
-
 export async function saveChat({
-  id,
-  userId,
-  title,
+    id,
+    userId,
+    title,
 }: {
-  id: string;
-  userId: string;
-  title: string;
+    id: string;
+    userId: string;
+    title: string;
 }) {
-  try {
+    try {
     return await db.insert(chat).values({
       id,
       createdAt: new Date(),
