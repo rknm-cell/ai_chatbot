@@ -1,6 +1,6 @@
  import {openai} from '@ai-sdk/openai';
-import { streamText } from 'ai';
-
+import { appendResponseMessages, streamText } from 'ai';
+import { saveChat } from '@/tools/chat-store';
 
 export const maxDuration = 30;
 
@@ -9,8 +9,16 @@ export async function POST(req: Request) {
 
   const result = streamText({
     model: openai('gpt-4-turbo'),
-    system: 'You are a helpful assistant.',
     messages,
+    async onFinish({ response }){
+      await saveChat({
+        id,
+        messages: appendResponseMessages({
+          messages,
+          responseMessages: response.messages,
+        }),
+      });
+    },
   });
 
   return result.toDataStreamResponse();

@@ -37,7 +37,11 @@ export default function Page() {
       {(status === "submitted" || status === "streaming") && (
         <div>
           {status === "submitted" && "Thinking hard..."}
-          <Button className="text-l h-4 w-4" type="button" onClick={() => stop()}>
+          <Button
+            className="text-l h-4 w-4"
+            type="button"
+            onClick={() => stop()}
+          >
             Pause
           </Button>
         </div>
@@ -52,7 +56,11 @@ export default function Page() {
             onChange={handleInputChange}
             disabled={status !== "ready"}
           />
-<Button className="text-l h-10 w-10 bg-accent rounded-4xl" type="button" onClick={() => stop()}>
+          <Button
+            className="text-l bg-accent h-10 w-10 rounded-4xl"
+            type="button"
+            onClick={() => stop()}
+          >
             Pause
           </Button>
           <Button className="h-10 w-20 rounded-3xl bg-teal-600" type="submit">
