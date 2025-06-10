@@ -1,7 +1,11 @@
-import { generateId } from 'ai';
+import { generateId, Message } from 'ai';
 import { existsSync, mkdirSync } from 'fs';
-import { writeFile } from 'fs/promises';
+import { writeFile, readFile } from 'fs/promises';
 import path from 'path';
+
+export async function loadChat(id: string): Promise<Message[]>{
+  return JSON.parse(await readFile(getChatFile(id), 'utf8'));
+}
 
 export async function createChat(): Promise<string> {
   const id = generateId(); // generate a unique chat ID

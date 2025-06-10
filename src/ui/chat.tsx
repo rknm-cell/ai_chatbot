@@ -1,6 +1,6 @@
 'use client';
 
-import { Message, useChat } from '@ai-sdk/react';
+import { type Message, useChat } from '@ai-sdk/react';
 
 export default function Chat({
   id,

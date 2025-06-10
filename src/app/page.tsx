@@ -1,82 +1,64 @@
 "use client";
 
-import { useState } from "react";
-import { useDebounce } from "use-debounce";
+import { useChat } from "@ai-sdk/react";
 import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
-
-type Message = {
-  role: "user" | "ai";
-  content: string;
-};
 
 export default function Page() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [text, setText] = useState<string>("");
-  const [prompt] = useDebounce(text, 1000);
-
-  async function handleGenerateResponse() {
-    setIsLoading(true);
-    const response = await fetch("/api/completion", {
-      method: "POST",
-      body: JSON.stringify({
-        prompt: prompt,
-      }),
-    });
-    const data = (await response.json()) as { text: string };
-
-    setMessages((prev) => [...prev, { role: "user", content: data.text }]);
-    setText("");
-    setIsLoading(false);
-  }
+  const {
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    status,
+    stop,
+    error,
+    reload,
+  } = useChat({});
 
   return (
-    <div className="flex h-dvh flex-col">
-      <div className="bg-amber-500 p-4 shadow-md">
-        <h1 className="text-xl font-bold text-white">Chat</h1>
-      </div>
-      <div className="flex-1 overflow-y-auto bg-amber-50 p-4">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`mb-4 max-w-[80%] ${
-              message.role === "user" ? "ml-auto" : "mr-auto"
-            }`}
-          >
-            <div
-              className={`rounded-lg p-3 ${
-                message.role === "user"
-                  ? "rounded-br-none bg-amber-500 text-white"
-                  : "rounded-bl-none bg-white shadow-md"
-              }`}
-            >
-              {message.content}
-            </div>
+    <div className="flex h-dvh flex-col justify-center bg-slate-700">
+      <p className="text-2xl text-black">Text Chat</p>
+      {messages.map((message) => (
+        <div key={message.id}>
+          {message.role === "user" ? "User: " : "AI: "}
+          {message.content}
+        </div>
+      ))}
+      {error && (
+        <>
+          <div className="text-1xl text-zinc-800">
+            Whoopsie daisy, now its all good and broke
           </div>
-        ))}
+          <button type="button" onClick={() => reload()}>
+            Retry
+          </button>
+        </>
+      )}
+      {(status === "submitted" || status === "streaming") && (
+        <div>
+          {status === "submitted" && "Thinking hard..."}
+          <Button className="text-l h-4 w-4" type="button" onClick={() => stop()}>
+            Pause
+          </Button>
+        </div>
+      )}
 
-        <Input
-          className="flex-1 border-amber-200 bg-amber-50 "
-          placeholder="Type your message..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          onKeyPress={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-              handleGenerateResponse();
-            }
-          }}
-          disabled={isLoading}
-        />
-
-        <Button
-          onClick={handleGenerateResponse}
-          disabled={isLoading}
-          className="bg-amber-500"
-        >
-          Generate
-        </Button>
+      <div className="flex flex-col justify-center">
+        <form onSubmit={handleSubmit}>
+          <input
+            className="h-20 w-200"
+            name="prompt"
+            value={input}
+            onChange={handleInputChange}
+            disabled={status !== "ready"}
+          />
+<Button className="text-l h-10 w-10 bg-accent rounded-4xl" type="button" onClick={() => stop()}>
+            Pause
+          </Button>
+          <Button className="h-10 w-20 rounded-3xl bg-teal-600" type="submit">
+            Submit
+          </Button>
+        </form>
       </div>
     </div>
   );
