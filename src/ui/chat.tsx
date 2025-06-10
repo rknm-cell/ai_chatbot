@@ -1,31 +1,32 @@
-'use client';
+"use client";
 
-import {Message, useChat} from '@ai-sdk/react';
+import { Message, useChat } from "@ai-sdk/react";
 
 export default function Chat({
   id,
   initialMessages,
-}:{ id?: string | undefined; initialMessages?: Message[] } = {}) {
+}: { id?: string | undefined; initialMessages?: Message[] } = {}) {
   const { input, handleInputChange, handleSubmit, messages } = useChat({
     id, // uses provided chat ID
     initialMessages, // initial messages if provided
     sendExtraMessageFields: true, // send id and createdAt for each message
+    experimental_prepareRequestBody({ messages, id }) {
+      return { message: messages[messages.length - 1], id };
+    },
   });
 
   //simplified rendering code, extend as needed:
-  return(
+  return (
     <div>
-      {messages.map(message => (
+      {messages.map((message) => (
         <div key={message.id}>
-          {message.role === 'user' ? 'User: ' : 'AI: '}
+          {message.role === "user" ? "User: " : "AI: "}
           {message.content}
-          </div>
+        </div>
       ))}
       <form onSubmit={handleSubmit}>
-        <input value={input} onChange={handleInputChange}/>
+        <input value={input} onChange={handleInputChange} />
       </form>
-
     </div>
-  )
-
+  );
 }
