@@ -24,9 +24,6 @@ export const chat = pgTable('Chat', {
   userId: uuid('userId')
     .notNull()
     .references(() => user.id),
-  visibility: varchar('visibility', { enum: ['public', 'private'] })
-    .notNull()
-    .default('private'),
 });
 
 export type Chat = InferSelectModel<typeof chat>;
@@ -36,11 +33,14 @@ export const message = pgTable('Message_v2', {
   chatId: uuid('chatId')
     .notNull()
     .references(() => chat.id),
-  role: varchar('role').notNull(),
-  parts: json('parts').notNull(),
-  attachments: json('attachments').notNull(),
+  content: varchar('content'),
   createdAt: timestamp('createdAt').notNull(),
 });
 
 export type DBMessage = InferSelectModel<typeof message>;
 
+export const streamIds = pgTable('stream_ids', {
+  id: uuid('id').primaryKey(),
+  chatId: uuid('chat_id').notNull().references(() => chat.id),
+  createdAt: timestamp('created_at').defaultNow()
+})

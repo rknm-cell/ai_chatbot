@@ -2,6 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
 
 export default function Page() {
   const {
@@ -26,8 +27,8 @@ export default function Page() {
       ))}
       {error && (
         <>
-          <div className="text-1xl text-zinc-800">
-            Whoopsie daisy, now its all good and broke
+          <div className="text-3xl text-red-500">
+            Error
           </div>
           <button type="button" onClick={() => reload()}>
             Retry
@@ -49,7 +50,7 @@ export default function Page() {
 
       <div className="flex flex-col justify-center">
         <form onSubmit={handleSubmit}>
-          <input
+          <Input
             className="h-20 w-200"
             name="prompt"
             value={input}
