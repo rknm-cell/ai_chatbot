@@ -10,7 +10,7 @@ import {
 } from "drizzle-orm/pg-core";
 
 export const user = pgTable('User', {
-  id: uuid('id').primaryKey().notNull().defaultRandom(),
+  id: varchar('id').primaryKey().notNull(),
   email: varchar('email', { length: 64 }).notNull(),
   password: varchar('password', { length: 64}),
 });
@@ -18,29 +18,25 @@ export type User = InferSelectModel<typeof user>;
 
 
 export const chat = pgTable('Chat', {
-  id: uuid('id').primaryKey().notNull().defaultRandom(),
+  id: varchar('id').primaryKey().notNull(),
   createdAt: timestamp('createdAt').notNull(),
   title: text('title').notNull(),
-  userId: uuid('userId')
-    .notNull()
-    .references(() => user.id),
+  // userId: uuid('userId')
+  //   .notNull()
+  //   .references(() => user.id),
 });
 
 export type Chat = InferSelectModel<typeof chat>;
 
 export const message = pgTable('Message_v2', {
-  id: uuid('id').primaryKey().notNull().defaultRandom(),
-  chatId: uuid('chatId')
+  id: varchar('id').primaryKey().notNull(),
+  chatId: varchar('chatId')
     .notNull()
     .references(() => chat.id),
+  role: varchar('role').notNull(),
   content: varchar('content'),
   createdAt: timestamp('createdAt').notNull(),
 });
 
 export type DBMessage = InferSelectModel<typeof message>;
 
-export const streamIds = pgTable('stream_ids', {
-  id: uuid('id').primaryKey(),
-  chatId: uuid('chat_id').notNull().references(() => chat.id),
-  createdAt: timestamp('created_at').defaultNow()
-})

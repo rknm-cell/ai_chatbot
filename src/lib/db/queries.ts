@@ -1,12 +1,10 @@
 import "server-only";
 import { asc, eq } from "drizzle-orm";
-import { chat, message, type DBMessage, type Chat, streamIds } from "./schema";
+import { chat, message, type DBMessage} from "./schema";
 
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import type { UUID } from "crypto";
-import { generateId } from "ai";
-import { writeFile } from "fs";
 
 const client = postgres(process.env.POSTGRES_URL!);
 const db = drizzle(client);
@@ -24,79 +22,46 @@ const db = drizzle(client);
 
 export async function saveChat({
   id,
-  userId,
   title,
 }: {
   id: UUID;
-  userId: string;
   title: string;
 }) {
+  console.log("save chat output", id, title);
   return await db.insert(chat).values({
     id,
     createdAt: new Date(),
-    userId,
     title,
   });
 }
 
 export async function getChatById({ id }: { id: string }) {
   const [selectedChat] = await db.select().from(chat).where(eq(chat.id, id));
+  console.log(selectedChat)
   return selectedChat;
 }
 
+
 export async function saveMessages({
-  id,
-  chatId,
-  content,
-  createdAt,
+  messages,
 }: {
-  id: UUID;
-  chatId: UUID;
-  content: string;
-  createdAt: Date;
+  messages: Array<DBMessage>;
 }) {
-  return await db.insert(message).values({
-    id,
-    chatId,
-    content,
-    createdAt
-  });
+  console.log('Save messages: ', messages)
+  return await db.insert(message).values(messages);
 }
 
 export async function getMessagesByChatId({ id }: { id: string }) {
-  // try {
-  //   return await db
-  //     .select()
-  //     .from(message)
-  //     .where(eq(message.chatId, id))
-  //     .orderBy(asc(message.createdAt));
-  // } catch (error) {
-  //   console.error("Failed to get messages by id", error);
-  // }
-  
-  console.log("before const message:", id)
-  const messages = await db
+  console.log("Message id:", id)
+  try {
+    return await db
       .select()
       .from(message)
       .where(eq(message.chatId, id))
       .orderBy(asc(message.createdAt));
-      
-  console.log("const message", messages)
-    if (!messages.length){
-      return []
-    } 
-    return messages
+  } catch (error) {
+    console.error("Failed to get messages by id", error);
+  }
 }
 
 
-// export async function loadStreams(chatId: string){
-//   try{
-//     const streams = await db.select().from(streamIds).where(eq(streamIds.chatId, chatId)).orderBy(asc(streamIds.createdAt))
-//     return streams.map(asc(streamIds.createdAt))
-//   }
-// }
-
-// export async function appendStreamId({
-//   chatId: string,
-//   streamId: string,
-// })
