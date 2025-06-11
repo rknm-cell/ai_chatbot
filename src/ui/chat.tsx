@@ -4,7 +4,7 @@ import { useChat } from "@ai-sdk/react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 
-export default function Page() {
+export default function Chat() {
   const {
     messages,
     input,
