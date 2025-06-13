@@ -1,0 +1,86 @@
+[
+  {
+    "id": "7br5Fw8hlObWx8dQ",
+    "createdAt": "2025-06-13T17:58:18.522Z",
+    "role": "user",
+    "content": "hello",
+    "parts": [
+      {
+        "type": "text",
+        "text": "hello"
+      }
+    ]
+  },
+  {
+    "id": "msg-8FeZ9oJn2GhoPr2LVNNluWnR",
+    "createdAt": "2025-06-13T17:58:19.650Z",
+    "role": "assistant",
+    "content": "Hello! How can I assist you today?",
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Hello! How can I assist you today?"
+      }
+    ],
+    "revisionId": "G1TogR6R6DNyPep4"
+  },
+  {
+    "id": "PAU3ezuFjk1d1RsG",
+    "createdAt": "2025-06-13T17:58:23.734Z",
+    "role": "user",
+    "content": "i'm rocking",
+    "parts": [
+      {
+        "type": "text",
+        "text": "i'm rocking"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "id": "msg-zQc8OwNgDWTjkDmFMewjE0Ht",
+    "createdAt": "2025-06-13T17:58:25.353Z",
+    "content": "That's great to hear! What’s making you feel so good?",
+    "toolInvocations": [],
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "That's great to hear! What’s making you feel so good?"
+      }
+    ]
+  },
+  {
+    "id": "4KO6uv3nLcqbpa0d",
+    "createdAt": "2025-06-13T17:58:45.447Z",
+    "role": "user",
+    "content": "hi",
+    "parts": [
+      {
+        "type": "text",
+        "text": "hi"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "id": "msg-NDjUEIvDenk8DuSklosVQZJv",
+    "createdAt": "2025-06-13T17:58:46.157Z",
+    "content": "Hi again! What’s on your mind?",
+    "toolInvocations": [],
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Hi again! What’s on your mind?"
+      }
+    ]
+  }
+]
