@@ -1,30 +1,24 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { openai } from '@ai-sdk/openai';
-import { streamText } from 'ai';
+import { appendResponseMessages, streamText } from 'ai';
+import { saveChat } from '~/tools/chat-store';
 
 export async function POST(req: Request) {
-  const { messages } = await req.json()
-  
+  const { messages, id } = await req.json();
+
   const result = streamText({
-    model: openai('gpt-4o'),
+    model: openai('gpt-4o-mini'),
     messages,
-  });
-
-  return result.toDataStreamResponse({
-    getErrorMessage: error => {
-      if (error == null) {
-        return 'unknown error';
-      }
-
-      if (typeof error === 'string') {
-        return error;
-      }
-
-      if (error instanceof Error) {
-        return error.message;
-      }
-
-      return JSON.stringify(error);
+    async onFinish({ response }) {
+      await saveChat({
+        id,
+        messages: appendResponseMessages({
+          messages,
+          responseMessages: response.messages,
+        }),
+      });
     },
   });
+
+  return result.toDataStreamResponse();
 }
