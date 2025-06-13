@@ -33,10 +33,7 @@ export async function POST(req: Request) {
 
   const previousMessages = await getMessagesByChatId({ id });
 
-  // const messages = appendClientMessage({
-  //   messages: previousMessages,
-  //   message,
-  // });
+  
 
   await saveChat({
     id,

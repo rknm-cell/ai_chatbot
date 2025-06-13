@@ -19,11 +19,7 @@ export default function Chat() {
   return (
 
     <div className="flex h-dvh flex-col bg-gray-100 dark:bg-gray-900">
-      <div className="sticky top-0 z-10 bg-white dark:bg-gray-800 shadow">
-        <div className="max-w-4xl mx-auto py-4 px-6">
-          <h1 className="text-2xl font-bold text-gray-800 dark:text-white">AI Chat</h1>
-        </div>
-      </div>
+      
       <div className="flex-1 overflow-y-auto p-6">
         <div className="max-w-4xl mx-auto space-y-4">
           {messages.map((message) => (
