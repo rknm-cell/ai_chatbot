@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { generateId } from "ai";
+
+// import { generateId } from "ai";
 import { existsSync, mkdirSync } from "fs";
 import { writeFile, readFile } from "fs/promises";
-import { Message } from "ai";
+import { type Message } from "ai";
 import uuid from 'react-uuid';
 
 import path from "path";
@@ -21,6 +21,7 @@ function getChatFile(id: string): string {
 }
 
 export async function loadChat(id: string): Promise<Message[]> {
+  // eslint-disable-next-line
   return JSON.parse(await readFile(getChatFile(id), 'utf8'));
 }
 
