@@ -1,0 +1,30 @@
+[
+  {
+    "id": "ocbmNElK3AtfWsMi",
+    "createdAt": "2025-06-13T20:44:29.721Z",
+    "role": "user",
+    "content": "hello",
+    "parts": [
+      {
+        "type": "text",
+        "text": "hello"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "id": "msg-il5z7BnCGXV6FnkPXknnUqdZ",
+    "createdAt": "2025-06-13T20:44:30.987Z",
+    "content": "Hello! How can I assist you today?",
+    "toolInvocations": [],
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Hello! How can I assist you today?"
+      }
+    ]
+  }
+]

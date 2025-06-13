@@ -6,11 +6,14 @@ import { type Message } from "ai";
 import uuid from 'react-uuid';
 
 import path from "path";
+import { saveChatToDB } from "~/lib/db/queries";
+import { type varchar } from "drizzle-orm/mysql-core";
 
 export async function createChat(): Promise<string> {
   const id = uuid(); // generate a unique chat ID
   console.log("type of id:",typeof(id))
   await writeFile(getChatFile(id), "[]"); // create an empty chat file
+  await saveChatToDB({id});
   return id;
 }
 
@@ -33,5 +36,6 @@ export async function saveChat({
   messages: Message[];
 }): Promise<void> {
   const content = JSON.stringify(messages, null, 2);
+  
   await writeFile(getChatFile(id), content);
 }
