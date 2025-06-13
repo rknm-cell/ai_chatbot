@@ -2,19 +2,21 @@ import { betterAuth } from "better-auth";
 import { nextCookies } from "better-auth/next-js";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "~/server/db";
- 
+import { schema } from "~/lib/db/schema";
+
 export const auth = betterAuth({
-    emailAndPassword: {  
-        enabled: true
-    },
-    socialProviders: { 
-        github: { 
-           clientId: process.env.GITHUB_CLIENT_ID as string, 
-           clientSecret: process.env.GITHUB_CLIENT_SECRET as string, 
+  socialProviders: {
+        google: { 
+            clientId: process.env.GOOGLE_CLIENT_ID!,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
         }, 
-    }, 
-    database: drizzleAdapter(db, {
-        provider: "pg", // or "mysql", "sqlite"
-    }),
-    plugins:[nextCookies()]
+    },
+  emailAndPassword: {
+    enabled: true,
+  },
+  database: drizzleAdapter(db, {
+    provider: "pg", // or "mysql", "sqlite"
+    schema,
+  }),
+  plugins: [nextCookies()],
 });

@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import { Logout } from "~/components/logout";
 
-function Dashboard() {
+export default function Dashboard() {
   return (
-    <div>Dashboard</div>
-  )
+    <div className="flex flex-col items-center justify-center h-screen">
+      <Logout />
+    </div>
+  );
 }
-
-export default Dashboard
