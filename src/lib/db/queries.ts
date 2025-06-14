@@ -10,6 +10,7 @@ export async function saveChatToDB({ id }: { id: string }) {
   try {
     return await db.insert(chat).values({
       id,
+      messages: [],
       createdAt: new Date(),
     });
   } catch (error) {
