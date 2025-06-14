@@ -5,6 +5,7 @@ import { saveChat } from '~/tools/chat-store';
 
 export async function POST(req: Request) {
   const { messages, id } = await req.json();
+  
 
   const result = streamText({
     model: openai('gpt-4o-mini'),
