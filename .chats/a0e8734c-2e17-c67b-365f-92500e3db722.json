@@ -1,0 +1,114 @@
+[
+  {
+    "id": "oAOIGySpA3M844j3",
+    "createdAt": "2025-06-13T19:37:36.223Z",
+    "role": "user",
+    "content": "wassap cool guy",
+    "parts": [
+      {
+        "type": "text",
+        "text": "wassap cool guy"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "id": "msg-gclFY5DtkV7sjmfePIhpdqRd",
+    "createdAt": "2025-06-13T19:37:38.101Z",
+    "content": "Hey! Not much, just here to chat. What’s up with you?",
+    "toolInvocations": [],
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Hey! Not much, just here to chat. What’s up with you?"
+      }
+    ]
+  },
+  {
+    "id": "EkaQvvrtWzEBLLHd",
+    "createdAt": "2025-06-13T19:40:05.689Z",
+    "role": "user",
+    "content": "just checking in",
+    "parts": [
+      {
+        "type": "text",
+        "text": "just checking in"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "id": "msg-6ursPVUVyhqBb5BYZk1aD3tK",
+    "createdAt": "2025-06-13T19:40:06.504Z",
+    "content": "Glad to hear from you! Anything specific on your mind, or just catching up?",
+    "toolInvocations": [],
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Glad to hear from you! Anything specific on your mind, or just catching up?"
+      }
+    ]
+  },
+  {
+    "id": "qUMIHy0wymwVdP5B",
+    "createdAt": "2025-06-13T19:45:40.451Z",
+    "role": "user",
+    "content": "debugging the chat",
+    "parts": [
+      {
+        "type": "text",
+        "text": "debugging the chat"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "id": "msg-yKnWwM3OCz6LIHsVRaCyd9NX",
+    "createdAt": "2025-06-13T19:45:41.684Z",
+    "content": "Got it! If you need any help with debugging or have questions about the chat, feel free to ask. What issues are you encountering?",
+    "toolInvocations": [],
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Got it! If you need any help with debugging or have questions about the chat, feel free to ask. What issues are you encountering?"
+      }
+    ]
+  },
+  {
+    "id": "nU5e4VfoUBcyeDSB",
+    "createdAt": "2025-06-13T19:47:02.428Z",
+    "role": "user",
+    "content": "ok",
+    "parts": [
+      {
+        "type": "text",
+        "text": "ok"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "id": "msg-CAAEIIr3rYFy6Slpg8TdZ7p0",
+    "createdAt": "2025-06-13T19:47:03.362Z",
+    "content": "If you have any specific questions or need assistance with something, just let me know! I'm here to help.",
+    "toolInvocations": [],
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "If you have any specific questions or need assistance with something, just let me know! I'm here to help."
+      }
+    ]
+  }
+]

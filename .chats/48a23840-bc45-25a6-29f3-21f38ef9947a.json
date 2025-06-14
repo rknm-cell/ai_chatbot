@@ -1,0 +1,86 @@
+[
+  {
+    "id": "sQnJZZoiT6r3PdkX",
+    "createdAt": "2025-06-13T18:18:39.015Z",
+    "role": "user",
+    "content": "hello",
+    "parts": [
+      {
+        "type": "text",
+        "text": "hello"
+      }
+    ]
+  },
+  {
+    "id": "msg-nL04vVj9jtwG1mNHW0Idi4R5",
+    "createdAt": "2025-06-13T18:18:40.267Z",
+    "role": "assistant",
+    "content": "Hello! How can I assist you today?",
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Hello! How can I assist you today?"
+      }
+    ],
+    "revisionId": "dTwDzcEmxPK01UWx"
+  },
+  {
+    "id": "VFMdcveA4BYs1AV3",
+    "createdAt": "2025-06-13T18:18:52.853Z",
+    "role": "user",
+    "content": "just debugging the chat",
+    "parts": [
+      {
+        "type": "text",
+        "text": "just debugging the chat"
+      }
+    ]
+  },
+  {
+    "id": "msg-yrAdxiXSl3TXJps43N3ND3IS",
+    "createdAt": "2025-06-13T18:18:53.875Z",
+    "role": "assistant",
+    "content": "No problem! If you have any questions or need assistance with anything specific, feel free to ask.",
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "No problem! If you have any questions or need assistance with anything specific, feel free to ask."
+      }
+    ],
+    "revisionId": "32xGqkPsmL8maBr4"
+  },
+  {
+    "id": "QOWUj5WEPu16KVpM",
+    "createdAt": "2025-06-13T18:19:05.034Z",
+    "role": "user",
+    "content": "I'll be right back",
+    "parts": [
+      {
+        "type": "text",
+        "text": "I'll be right back"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "id": "msg-N9fE2aSuzzNgFu1DQ7LJawWE",
+    "createdAt": "2025-06-13T18:19:06.170Z",
+    "content": "Sure! Take your time. I'll be here when you're ready.",
+    "toolInvocations": [],
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Sure! Take your time. I'll be here when you're ready."
+      }
+    ]
+  }
+]

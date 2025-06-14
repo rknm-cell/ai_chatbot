@@ -1,0 +1,86 @@
+[
+  {
+    "id": "d22QeNbWxM1p6APx",
+    "createdAt": "2025-06-13T20:55:00.830Z",
+    "role": "user",
+    "content": "hello",
+    "parts": [
+      {
+        "type": "text",
+        "text": "hello"
+      }
+    ]
+  },
+  {
+    "id": "msg-xuRWMegw4dMpWfbdDsneFcyr",
+    "createdAt": "2025-06-13T20:55:01.817Z",
+    "role": "assistant",
+    "content": "Hello! How can I assist you today?",
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Hello! How can I assist you today?"
+      }
+    ],
+    "revisionId": "j2F0LN1zm3LYXyo7"
+  },
+  {
+    "id": "7wwx0t1JlQmr5CT0",
+    "createdAt": "2025-06-13T20:56:21.043Z",
+    "role": "user",
+    "content": "hello",
+    "parts": [
+      {
+        "type": "text",
+        "text": "hello"
+      }
+    ]
+  },
+  {
+    "id": "msg-79pEIJXVtpkBLhwUjlHDUBCg",
+    "createdAt": "2025-06-13T20:56:21.786Z",
+    "role": "assistant",
+    "content": "Hi there! How can I help you today?",
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Hi there! How can I help you today?"
+      }
+    ],
+    "revisionId": "HiACQ9NwvNmwsZxS"
+  },
+  {
+    "id": "XWJYhrvPSBVvrtgd",
+    "createdAt": "2025-06-13T20:56:36.297Z",
+    "role": "user",
+    "content": "hi",
+    "parts": [
+      {
+        "type": "text",
+        "text": "hi"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "id": "msg-wEsFy69AYzepLgVQuFGYNbie",
+    "createdAt": "2025-06-13T20:56:36.936Z",
+    "content": "Hello! How's your day going?",
+    "toolInvocations": [],
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Hello! How's your day going?"
+      }
+    ]
+  }
+]

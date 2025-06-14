@@ -1,0 +1,58 @@
+[
+  {
+    "id": "WFcszhIiGPxbAM4h",
+    "createdAt": "2025-06-13T21:08:19.087Z",
+    "role": "user",
+    "content": "ok",
+    "parts": [
+      {
+        "type": "text",
+        "text": "ok"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "id": "msg-A8a7DyepZKz7V3Qe2O4NwOXe",
+    "createdAt": "2025-06-13T21:08:20.206Z",
+    "content": "Hello! How can I assist you today?",
+    "toolInvocations": [],
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "Hello! How can I assist you today?"
+      }
+    ]
+  },
+  {
+    "id": "evdB0CYuvDIjAOgh",
+    "createdAt": "2025-06-13T21:08:58.713Z",
+    "role": "user",
+    "content": "ok",
+    "parts": [
+      {
+        "type": "text",
+        "text": "ok"
+      }
+    ]
+  },
+  {
+    "role": "assistant",
+    "id": "msg-WYkVNQ9yYNxjWq0Nqd7T9ydl",
+    "createdAt": "2025-06-13T21:08:59.545Z",
+    "content": "If you have any questions or topics you'd like to discuss, feel free to share! I'm here to help.",
+    "toolInvocations": [],
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "text",
+        "text": "If you have any questions or topics you'd like to discuss, feel free to share! I'm here to help."
+      }
+    ]
+  }
+]

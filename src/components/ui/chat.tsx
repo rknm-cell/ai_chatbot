@@ -1,24 +1,36 @@
-'use client';
+"use client";
 
-import { type Message, useChat } from '@ai-sdk/react';
-import Spinner from './spinner';
-import { Input } from './input';
-import { Button } from './button';
+import { type Message, useChat } from "@ai-sdk/react";
+import Spinner from "./spinner";
+import { Input } from "./input";
+import { Button } from "./button";
 
 export default function Chat({
   id,
   initialMessages,
 }: { id?: string | undefined; initialMessages?: Message[] } = {}) {
-  const { input, handleInputChange, handleSubmit, error, reload, status, messages } = useChat({
+  const {
+    input,
+    handleInputChange,
+    handleSubmit,
+    error,
+    reload,
+    status,
+    messages,
+    setMessages,
+  } = useChat({
     id, // use the provided chat ID
     initialMessages, // initial messages if provided
     sendExtraMessageFields: true, // send id and createdAt for each message
   });
 
+  // const handleDelete = (id) => {
+  //   setMessages(messages.filter((message) => message.id !== id));
+  // };
+
   // simplified rendering code, extend as needed:
   return (
-  
-     <>
+    <>
       <div>Say something</div>
       {messages.map((message) => (
         <div key={message.id}>
@@ -29,7 +41,7 @@ export default function Chat({
 
       {(status === "submitted" || status === "streaming") && (
         <div>
-          {status === "submitted" && <Spinner/>}
+          {status === "submitted" && <Spinner />}
           <button type="button" onClick={() => stop()}>
             Stop
           </button>
