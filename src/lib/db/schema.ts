@@ -5,6 +5,8 @@ import {
   text,
   varchar,
   boolean,
+  jsonb,
+  
 } from "drizzle-orm/pg-core";
 
 export type User = InferSelectModel<typeof user>;
@@ -12,25 +14,26 @@ export type User = InferSelectModel<typeof user>;
 export const chat = pgTable("Chat", {
   id: varchar("id").primaryKey().notNull(),
   createdAt: timestamp("createdAt").notNull(),
-  title: text("title").notNull(),
-  // userId: uuid('userId')
+  messages: jsonb().notNull()
+  // userId: text("userId")
   //   .notNull()
   //   .references(() => user.id),
 });
 
 export type Chat = InferSelectModel<typeof chat>;
 
-export const message = pgTable("Message_v2", {
+export const message = pgTable("Message", {
   id: varchar("id").primaryKey().notNull(),
   chatId: varchar("chatId")
     .notNull()
     .references(() => chat.id),
+    
   role: varchar("role").notNull(),
   content: varchar("content"),
   createdAt: timestamp("createdAt").notNull(),
 });
 
-export type DBMessage = InferSelectModel<typeof message>;
+export type Message = InferSelectModel<typeof message>;
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
